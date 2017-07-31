@@ -1,0 +1,26 @@
+{
+  "name": "teste-jexia-front-end",
+  "version": "1.0.0",
+  "description": "Test using StarWarsAPI (swapi.co) for a front end job",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jhoow13/StarWarsAPI.git"
+  },
+  "keywords": [
+    "test",
+    "front",
+    "end",
+    "starwars",
+    "jexia"
+  ],
+  "author": "joelcsilva@outlook.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jhoow13/StarWarsAPI/issues"
+  },
+  "homepage": "https://github.com/Jhoow13/StarWarsAPI#readme"
+}
