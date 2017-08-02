@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="swApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Projeto Modelo</title>    
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="app/assets/style.css">    
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-route/angular-route.js"></script>
+    <script src="src/index.js"></script>     
+</head>
+<body>
+    <div class="container page-wrap">
+        <header>
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container">
+                    <a class="navbar-brand" href="#">Logo</a>
+                    <ul class="nav navbar-nav navbar-right">                    
+                        <li class=""><a href="#">Sobre</a></li>                        
+                        <li class=""><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <ng-view></ng-view>        
+    </div>
+    <footer class="footer">
+        <p class="text-muted text-center">Projeto &copy;</p>
+    </footer>
+</body>
+</html>

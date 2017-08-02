@@ -1,0 +1,36 @@
+*{
+    margin:0;
+}
+
+html, body{
+    height: 100%;
+}
+
+body{
+    padding-top: 70px;    
+}
+
+nav{
+    box-shadow: 5px 15px 10px -15px rgba(140,140,140,1)
+}
+
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -60px; 
+}
+
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+
+.footer, .page-wrap:after {
+  height: 60px; 
+}
+
+.footer{    
+    height: 60px;
+    background-color: #eee;    
+    padding:15px;
+}
