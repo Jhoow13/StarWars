@@ -34,7 +34,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="resident in residents">
+			<tr ng-click="getPersonDetailsFromPlanetList(resident.url)" ng-repeat="resident in residents">
 				<td ng-bind="resident.name"></td>				
 			</tr>
 		</tbody>
