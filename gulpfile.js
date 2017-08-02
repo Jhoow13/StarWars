@@ -3,6 +3,8 @@ var browserSync = require('browser-sync').create();
 var jshint = require('gulp-jshint');
 var clean = require('gulp-clean');
 var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
+let cleanCSS = require('gulp-clean-css');
 
 var appFiles = {
     htmlfiles:[
@@ -13,20 +15,28 @@ var appFiles = {
     cssFiles:[
         './app/assets/*.css'
     ],
+    cssFilesProd:[
+        'node_modules/bootstrap/dist/css/bootstrap.min.css'
+    ],
     jsFiles: [
         './app/*.js',
         './app/config/*.js',
         './app/controllers/*.js',
         './app/services/*.js',
         './app/directives/**/**/*.js'       
-
+    ],
+    jsFilesProd:[
+        'node_modules/angular/angular.min.js',
+        'node_modules/angular-route/angular-route.min.js'
     ]
 };
 
 gulp.task('clean', function(){
-    return gulp.src('src/*')
+    gulp.src('src/**/**.**')
     .pipe(clean());
 });
+
+//** PRODUCTION TASKS **//
 
 gulp.task('jshint', function(){
     return gulp.src(appFiles.jsFiles)
@@ -39,6 +49,37 @@ gulp.task('js', function(){
     .pipe(concat('index.js'))
     .pipe(gulp.dest('src/'));
 });
+
+
+//** BUILD TASKS **//
+gulp.task('jsDependences-prod', function(){
+    return gulp.src(appFiles.jsFilesProd)
+    .pipe(concat('dependences.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('src/js/'));
+});
+
+gulp.task('jsFiles-prod', function(){
+    return gulp.src(appFiles.jsFiles)
+    .pipe(concat('app.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('src/js/'));
+});
+
+gulp.task('cssDependences-prod', function(){
+    return gulp.src(appFiles.cssFilesProd)
+    .pipe(concat('assets.css'))
+    .pipe(cleanCSS())
+    .pipe(gulp.dest('src/css/'));
+});
+
+gulp.task('cssFiles-prod', function(){
+    return gulp.src(appFiles.cssFiles)
+    .pipe(concat('style.css'))
+    .pipe(cleanCSS())
+    .pipe(gulp.dest('src/css/'));
+});
+
 
 gulp.task('reload', function(done){
     browserSync.reload();
@@ -58,4 +99,5 @@ gulp.task('serve', ['js'], function(){
 
 });
 
+gulp.task('build', ['clean', 'jsDependences-prod', 'jsFiles-prod', 'cssDependences-prod', 'cssFiles-prod'])
 gulp.task('default',['jshint', 'serve']);
