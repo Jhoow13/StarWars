@@ -5,17 +5,17 @@
 
               var personUrl = '';
 
-              var addProduct = function(newUrl) {
+              var addUrl = function(newUrl) {
                   personUrl = sessionStorage.setItem('url', newUrl) ;
               };
 
-              var getProducts = function(url){
+              var getUrl = function(url){
                   return sessionStorage.getItem(url);
               };
 
               return {
-                addProduct: addProduct,
-                getProducts: getProducts
+                addUrl: addUrl,
+                getUrl: getUrl
               };
 
         }]);
