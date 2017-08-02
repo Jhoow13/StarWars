@@ -1,7 +1,3 @@
-*{
-    margin:0;
-}
-
 html, body{
     height: 100%;
 }
@@ -14,9 +10,10 @@ nav{
     box-shadow: 5px 15px 10px -15px rgba(140,140,140,1)
 }
 
-th[ng-click]{
+.mouse-pointer{
 	cursor: pointer;
 }
+
 
 
 /** helper classes **/
