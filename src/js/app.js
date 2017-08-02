@@ -75,6 +75,11 @@
             	})
             }
 
+            $scope.sortBy = function (field) {
+                $scope.orderWith = field;
+                $scope.orderDirection = !$scope.orderDirection;
+            };
+
             $scope.getPersonDetails();
 
         }]);
