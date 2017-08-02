@@ -1,1 +1,201 @@
-!function(){"use strict";angular.module("swApp",["ngRoute"])}(),function(){"use strict";angular.module("swApp").config(["$routeProvider","$locationProvider",function(e,t){e.when("/",{templateUrl:"app/views/list.html",controller:"listController"}).when("/details",{templateUrl:"app/views/details.html",controller:"detailsController"}).otherwise({redirectTo:"/"}),t.hashPrefix("")}])}(),function(){"use strict";angular.module("swApp").controller("detailsController",["$scope","$location","swHttpService","personDetailService",function(e,t,n,r){e.rotas=function(){t.path("/")};var o=r.getUrl("url");e.getPersonDetails=function(){n.getPerson(o).then(function(t){a(t.data.homeworld),e.personDetails=t.data})},e.getPersonDetailsFromPlanetList=function(t){o=r.addUrl(t),n.getPerson(t).then(function(t){a(t.data.homeworld),e.personDetails=t.data})};var a=function(t){n.getPlanet(t).then(function(t){e.personPlanet=t.data.name,e.residents=[],t.data.residents.forEach(function(t){n.getPerson(t).then(function(t){e.residents.push({name:t.data.name,url:t.data.url})})})})};e.getPersonDetails()}])}(),function(){"use strict";angular.module("swApp").controller("listController",["$scope","$location","swHttpService","personDetailService",function(e,t,n,r){e.rotas=function(){t.path("/details")},e.currentPage=0,e.numberOfPages=9,n.getAllPeople().then(function(t){e.peopleList=t.data.results,e.nextPage=t.data.next,e.previousPage=t.data.previous}),e.searchAllPeople=function(t){n.searchPeople(t).then(function(t){e.peopleList=t.data.results})},e.getAllPeopleNextPage=function(t){n.getAllPeople(t).then(function(t){e.currentPage=e.currentPage+1,e.previousPage=t.data.previous,e.nextPage=t.data.next,e.peopleList=t.data.results})},e.getAllPeoplePreviousPage=function(t){n.getAllPeople(t).then(function(t){e.currentPage=e.currentPage-1,e.previousPage=t.data.previous,e.nextPage=t.data.next,e.peopleList=t.data.results})},e.getPersonDetails=function(e){r.addUrl(e),t.path("/details")},e.sortBy=function(t){e.orderWith=t,e.orderDirection=!e.orderDirection}}])}(),function(){"use strict";angular.module("swApp").service("personDetailService",[function(){var e="";return{addUrl:function(t){e=sessionStorage.setItem("url",t)},getUrl:function(e){return sessionStorage.getItem(e)}}}])}(),function(){"use strict";angular.module("swApp").factory("swHttpService",["$http",function(e){return{getAllPeople:function(t){return e({method:"GET",url:t||"http://swapi.co/api/people/"})},searchPeople:function(t){return e({method:"GET",url:"https://swapi.co/api/people/?search="+t})},getPerson:function(t){return e({method:"GET",url:t})},getPlanet:function(t){return e({method:"GET",url:t})}}}])}();
+(function() {
+    'use strict';    
+    angular.module('swApp', ['ngRoute']);
+    
+})();
+(function(){
+    'use strict';
+
+    angular.module('swApp').config(['$routeProvider', '$locationProvider',
+             function($routeProvider, $locationProvider) {
+
+            $routeProvider            
+
+            .when('/', {
+                templateUrl: 'app/views/list.html',
+                controller: 'listController'
+            })
+
+            .when('/details', {
+                templateUrl: 'app/views/details.html',
+                controller: 'detailsController'
+            })
+
+            .otherwise({redirectTo: '/'});
+
+
+            $locationProvider.hashPrefix('');
+
+        }]);
+})();
+
+
+(function () {
+    "use strict";
+    angular.module('swApp')
+        .controller('detailsController',
+        	['$scope','$location', 'swHttpService', 'personDetailService', function ($scope,$location, swHttpService, personDetailService) {
+
+            $scope.rotas = function(){
+                $location.path('/');
+            };
+
+            var personUrl = personDetailService.getUrl('url');
+
+
+            $scope.getPersonDetails = function(){
+            	swHttpService.getPerson(personUrl).then(function(response){
+            		getPlanet(response.data.homeworld);
+            		$scope.personDetails = response.data;
+	            });
+            }
+
+            $scope.getPersonDetailsFromPlanetList = function(personUrlFromPlanetList){
+            	personUrl = personDetailService.addUrl(personUrlFromPlanetList);
+            	swHttpService.getPerson(personUrlFromPlanetList).then(function(response){
+            		getPlanet(response.data.homeworld);
+            		$scope.personDetails = response.data;
+	            });
+            }
+
+            var getPlanet = function(planetUrl){
+            	swHttpService.getPlanet(planetUrl).then(function(response){
+            		$scope.personPlanet = response.data.name;
+            		$scope.residents = [];
+            		var residents = response.data.residents;
+
+            		residents.forEach(function(residentsUrl){
+            			swHttpService.getPerson(residentsUrl).then(function(response){
+			        		$scope.residents.push({
+			        			name: response.data.name,
+			        			url: response.data.url
+			        		});
+			            });
+            		});
+            	})
+            }
+
+            $scope.getPersonDetails();
+
+        }]);
+})();
+(function () {
+    "use strict";
+    angular.module('swApp')
+        .controller('listController',
+        	['$scope','$location','swHttpService','personDetailService', function ($scope, $location, swHttpService, personDetailService) {
+
+            $scope.rotas = function(){
+                $location.path('/details');
+            };
+
+           	$scope.currentPage = 0;
+           	$scope.numberOfPages = 9;
+
+           	swHttpService.getAllPeople().then(function(response){
+            	$scope.peopleList = response.data.results;
+            	$scope.nextPage = response.data.next;
+            	$scope.previousPage = response.data.previous;
+            });
+
+            $scope.searchAllPeople = function(searchParameter){
+	        	swHttpService.searchPeople(searchParameter).then(function(response){
+	            	$scope.peopleList = response.data.results;
+	            });
+            }
+
+            $scope.getAllPeopleNextPage = function(peopleUrl){
+            	swHttpService.getAllPeople(peopleUrl).then(function(response){
+            		$scope.currentPage = $scope.currentPage + 1;
+            		$scope.previousPage = response.data.previous;
+            		$scope.nextPage = response.data.next;
+	            	$scope.peopleList = response.data.results;
+	            });
+            }
+
+            $scope.getAllPeoplePreviousPage = function(peopleUrl){
+            	swHttpService.getAllPeople(peopleUrl).then(function(response){
+            		$scope.currentPage = $scope.currentPage - 1;
+            		$scope.previousPage = response.data.previous;
+            		$scope.nextPage = response.data.next;
+	            	$scope.peopleList = response.data.results;
+	            });
+            }
+
+            $scope.getPersonDetails = function(personUrl){
+
+        		personDetailService.addUrl(personUrl);
+	            $location.path('/details');
+            }
+
+			$scope.sortBy = function (field) {
+				$scope.orderWith = field;
+				$scope.orderDirection = !$scope.orderDirection;
+			};
+
+        }]);
+})();
+(function(){
+    'use strict';
+    angular.module('swApp')
+        .service('personDetailService', [function (){
+
+              var personUrl = '';
+
+              var addUrl = function(newUrl) {
+                  personUrl = sessionStorage.setItem('url', newUrl) ;
+              };
+
+              var getUrl = function(url){
+                  return sessionStorage.getItem(url);
+              };
+
+              return {
+                addUrl: addUrl,
+                getUrl: getUrl
+              };
+
+        }]);
+}());
+(function(){
+    'use strict';
+    angular.module('swApp')
+        .factory('swHttpService', ['$http', function ($http){
+
+            var _getAllPeople = function(peopleUrl){
+                return $http({
+                    method: 'GET',
+                    url: peopleUrl ? peopleUrl : 'http://swapi.co/api/people/'
+                });
+            };
+
+            var _searchPeople = function(searchParameter){
+                return $http({
+                    method: 'GET',
+                    url: 'https://swapi.co/api/people/?search=' + searchParameter
+               });
+            }
+
+            var _getPerson = function(personUrl){
+                return $http({
+                    method: 'GET',
+                    url: personUrl
+                });
+            }
+
+            var _getPlanet = function(planetUrl){
+                return $http({
+                    method:'GET',
+                    url: planetUrl
+                });
+            }
+
+            return {
+                getAllPeople: _getAllPeople,
+                searchPeople: _searchPeople,
+                getPerson: _getPerson,
+                getPlanet: _getPlanet
+            };
+            
+        }]);
+}());

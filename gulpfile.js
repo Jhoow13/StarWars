@@ -36,7 +36,7 @@ gulp.task('clean', function(){
     .pipe(clean());
 });
 
-//** PRODUCTION TASKS **//
+//** DEV TASKS **//
 
 gulp.task('jshint', function(){
     return gulp.src(appFiles.jsFiles)
@@ -61,8 +61,7 @@ gulp.task('jsDependences-prod', function(){
 
 gulp.task('jsFiles-prod', function(){
     return gulp.src(appFiles.jsFiles)
-    .pipe(concat('app.js'))
-    .pipe(uglify())
+    .pipe(concat('app.js'))    
     .pipe(gulp.dest('src/js/'));
 });
 
