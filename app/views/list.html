@@ -14,17 +14,17 @@
 <br>
 <table class="table table-hover table-bordered">
 	<thead>
-		<tr>
+		<tr">
 			<th>Name</th>
 			<th>Gender</th>
 			<th>Planet</th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td>Content</td>
-			<td>Content</td>
-			<td>Content</td>
+		<tr ng-repeat="person in peopleList">
+			<td ng-bind="person.name"></td>
+			<td ng-bind="person.gender"></td>
+			<td ng-bind="person.homeworld"></td>
 		</tr>
 	</tbody>
 </table>
