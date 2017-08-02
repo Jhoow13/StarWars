@@ -1,25 +1,20 @@
-<h1>Star Wars</h1>
-<p>
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum dolor consequuntur iste perspiciatis esse. Tenetur dolorem sint porro doloremque alias dolor odio perferendis architecto, culpa labore consequatur, at quia, praesentium.
-</p>
-
 <form>
-	<div class="input-group">
-		<label class="control-label" for="txtSearch">Search</label>
+	<div class="input-group col-xs-12">
+		<label class="control-label" for="txtSearch">Search by name</label>
 		<input class="form-control" type="text" ng-model="txtSearch.name" name="txtSearch" id="txtSearch" ng-change="searchAllPeople(txtSearch.name)">
 	</div>
 </form>
 <br>
-<table class="table table-hover table-bordered">
+<table class="table table-hover table-bordered table-responsive">
 	<thead>
-		<tr>
+		<tr class="mouse-pointer">
 			<th ng-click="sortBy('name')">Name</th>
 			<th ng-click="sortBy('gender')">Gender</th>
 			<th ng-click="sortBy('birth_year')">Birth Year</th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-click="getPersonDetails(person.url)" ng-repeat="person in peopleList | filter: txtSearch | orderBy:orderWith:orderDirection">
+		<tr ng-click="getPersonDetails(person.url)" ng-repeat="person in peopleList | filter: txtSearch | orderBy:orderWith:orderDirection" class="mouse-pointer">
 			<td ng-bind="person.name"></td>
 			<td ng-bind="person.gender"></td>
 			<td ng-bind="person.birth_year"></td>
@@ -27,8 +22,8 @@
 	</tbody>
 </table>
 <div class="text-center mb10">
-	<button type="button" class="btn btn-default" ng-click="getAllPeoplePreviousPage(previousPage)" ng-disabled="currentPage == 0">Previous</button>
+	<button type="button" class="btn btn-default" ng-click="getAllPeoplePreviousPage(previousPage)" ng-disabled="currentPage <= 0">Previous</button>
 	<span ng-bind="currentPage+1"></span>/
 	<span ng-bind="numberOfPages"></span>
-	<button type="button" class="btn btn-default" ng-click="getAllPeopleNextPage(nextPage)" ng-disabled="currentPage == 8">Next</button>
+	<button type="button" class="btn btn-default" ng-click="getAllPeopleNextPage(nextPage)" ng-disabled="currentPage >= 8">Next</button>
 </div>
