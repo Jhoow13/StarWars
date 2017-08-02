@@ -2,7 +2,7 @@
     "use strict";
     angular.module('swApp')
         .controller('listController',
-        	['$scope','$location','swHttpService', function ($scope, $location, swHttpService) {
+        	['$scope','$location','swHttpService','personDetailService', function ($scope, $location, swHttpService, personDetailService) {
 
             $scope.rotas = function(){
                 $location.path('/details');
@@ -15,8 +15,6 @@
             	$scope.peopleList = response.data.results;
             	$scope.nextPage = response.data.next;
             	$scope.previousPage = response.data.previous;
-
-            	console.log(response.data);
 
             });
 
@@ -38,16 +36,10 @@
 	            });
             }
 
-            var getPersonDetails = function(personUrl){
-            	swHttpService.getPerson(personUrl).then(function(response){
+            $scope.getPersonDetails = function(personUrl){
 
-	            });
-            }
-
-            var getPlanet = function(planetUrl){
-            	swHttpService.getPlanet(planetUrl).then(function(response){
-
-	            });
+        		personDetailService.addProduct(personUrl);
+	            $location.path('/details');
             }
 
 			$scope.sortBy = function (field) {

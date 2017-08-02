@@ -2,8 +2,6 @@
 <p>
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum dolor consequuntur iste perspiciatis esse. Tenetur dolorem sint porro doloremque alias dolor odio perferendis architecto, culpa labore consequatur, at quia, praesentium.
 </p>
-<button type="button" class="btn btn-default center-block" ng-click="rotas()">Next</button>
-
 
 <form>
 	<div class="input-group">
@@ -14,14 +12,14 @@
 <br>
 <table class="table table-hover table-bordered">
 	<thead>
-		<tr">
+		<tr>
 			<th ng-click="sortBy('name')">Name</th>
 			<th ng-click="sortBy('gender')">Gender</th>
 			<th ng-click="sortBy('birth_year')">Birth Year</th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="person in peopleList | filter: txtSearch | orderBy:orderWith:orderDirection">
+		<tr ng-click="getPersonDetails(person.url)" ng-repeat="person in peopleList | filter: txtSearch | orderBy:orderWith:orderDirection">
 			<td ng-bind="person.name"></td>
 			<td ng-bind="person.gender"></td>
 			<td ng-bind="person.birth_year"></td>
