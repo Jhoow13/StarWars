@@ -10,6 +10,13 @@
                 });
             };
 
+            var _searchPeople = function(searchParameter){
+                return $http({
+                    method: 'GET',
+                    url: 'https://swapi.co/api/people/?search=' + searchParameter
+               });
+            }
+
             var _getPerson = function(personUrl){
                 return $http({
                     method: 'GET',
@@ -26,6 +33,7 @@
 
             return {
                 getAllPeople: _getAllPeople,
+                searchPeople: _searchPeople,
                 getPerson: _getPerson,
                 getPlanet: _getPlanet
             };
