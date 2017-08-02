@@ -165,7 +165,7 @@
             var _getAllPeople = function(peopleUrl){
                 return $http({
                     method: 'GET',
-                    url: peopleUrl ? peopleUrl : 'http://swapi.co/api/people/'
+                    url: peopleUrl ? peopleUrl : 'https://swapi.co/api/people/'
                 });
             };
 
