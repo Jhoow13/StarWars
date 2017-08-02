@@ -22,5 +22,18 @@
   "bugs": {
     "url": "https://github.com/Jhoow13/StarWarsAPI/issues"
   },
-  "homepage": "https://github.com/Jhoow13/StarWarsAPI#readme"
+  "homepage": "https://github.com/Jhoow13/StarWarsAPI#readme",
+  "dependencies": {
+    "angular": "^1.6.5",
+    "angular-route": "^1.6.5",
+    "bootstrap": "^3.3.7"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.13",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-jshint": "^2.0.4",
+    "jshint": "^2.9.5"
+  }
 }
