@@ -6,7 +6,7 @@
 <form>
 	<div class="input-group">
 		<label class="control-label" for="txtSearch">Search</label>
-		<input class="form-control" type="text" ng-model="txtSearch.name" name="txtSearch" id="txtSearch">
+		<input class="form-control" type="text" ng-model="txtSearch.name" name="txtSearch" id="txtSearch" ng-change="searchAllPeople(txtSearch.name)">
 	</div>
 </form>
 <br>

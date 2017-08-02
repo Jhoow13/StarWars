@@ -15,8 +15,13 @@
             	$scope.peopleList = response.data.results;
             	$scope.nextPage = response.data.next;
             	$scope.previousPage = response.data.previous;
-
             });
+
+            $scope.searchAllPeople = function(searchParameter){
+	        	swHttpService.searchPeople(searchParameter).then(function(response){
+	            	$scope.peopleList = response.data.results;
+	            });
+            }
 
             $scope.getAllPeopleNextPage = function(peopleUrl){
             	swHttpService.getAllPeople(peopleUrl).then(function(response){
@@ -38,7 +43,7 @@
 
             $scope.getPersonDetails = function(personUrl){
 
-        		personDetailService.addProduct(personUrl);
+        		personDetailService.addUrl(personUrl);
 	            $location.path('/details');
             }
 
