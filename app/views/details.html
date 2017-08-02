@@ -3,44 +3,39 @@
 	<p>
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima iusto, sint nesciunt quod, nemo quo architecto laudantium soluta amet natus dolores excepturi id ad libero aliquam molestiae placeat, error totam.
 	</p>
-	<div class="row col-md-6">
+	<div class="col-md-6">		
 		<table class="table table-hover table-bordered table-condensed">
 			<tbody>
 				<tr>
 					<td>Name</td>
-					<td>sdasds</td>
+					<td ng-bind="personDetails.name"></td>
 				</tr>
 				<tr>
 					<td>Gender</td>
-					<td>dsdsd</td>
+					<td ng-bind="personDetails.gender"></td>
 				</tr>
 					<td>Birth Year</td>
-					<td>dsdsd</td>
+					<td ng-bind="personDetails.birth_year"></td>
 				<tr>
 					<td>Planet</td>
-					<td>dsdsd</td>
+					<td ng-bind="personPlanet"></td>
 				</tr>
 
 			</tbody>
-		</table>
-		<button type="button" class="btn btn-default" ng-click="rotas()">Back</button>
+		</table>		
 	</div>
 </div>
-<div class="row">
+<div class="row col-md-6">
 	<span>More from same planet</span>
 	<table class="table table-hover table-bordered">
 		<thead>
 			<tr>
-				<th>Name</th>
-				<th>Gender</th>
-				<th>Planet</th>
+				<th>Name</th>				
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>Content</td>
-				<td>Content</td>
-				<td>Content</td>
+			<tr ng-repeat="resident in residents">
+				<td ng-bind="resident.name"></td>				
 			</tr>
 		</tbody>
 	</table>
