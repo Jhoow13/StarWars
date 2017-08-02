@@ -8,17 +8,35 @@
                 $location.path('/details');
             };
 
-            swHttpService.getAllPeople().then(function(response){
+           	$scope.currentPage = 0;
+           	$scope.numberOfPages = 9;
+
+           	swHttpService.getAllPeople().then(function(response){
             	$scope.peopleList = response.data.results;
+            	$scope.nextPage = response.data.next;
+            	$scope.previousPage = response.data.previous;
 
             	console.log(response.data);
 
-            	$scope.peopleList.forEach(function(person){
-            		getPlanet(person.homeworld);
-
-            		getPersonDetails(person.url);
-            	});
             });
+
+            $scope.getAllPeopleNextPage = function(peopleUrl){
+            	swHttpService.getAllPeople(peopleUrl).then(function(response){
+            		$scope.currentPage = $scope.currentPage + 1;
+            		$scope.previousPage = response.data.previous;
+            		$scope.nextPage = response.data.next;
+	            	$scope.peopleList = response.data.results;
+	            });
+            }
+
+            $scope.getAllPeoplePreviousPage = function(peopleUrl){
+            	swHttpService.getAllPeople(peopleUrl).then(function(response){
+            		$scope.currentPage = $scope.currentPage - 1;
+            		$scope.previousPage = response.data.previous;
+            		$scope.nextPage = response.data.next;
+	            	$scope.peopleList = response.data.results;
+	            });
+            }
 
             var getPersonDetails = function(personUrl){
             	swHttpService.getPerson(personUrl).then(function(response){
@@ -31,6 +49,11 @@
 
 	            });
             }
+
+			$scope.sortBy = function (field) {
+				$scope.orderWith = field;
+				$scope.orderDirection = !$scope.orderDirection;
+			};
 
         }]);
 })();

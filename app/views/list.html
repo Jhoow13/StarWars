@@ -8,23 +8,29 @@
 <form>
 	<div class="input-group">
 		<label class="control-label" for="txtSearch">Search</label>
-		<input class="form-control" type="text" name="txtSearch" id="txtSearch">
+		<input class="form-control" type="text" ng-model="txtSearch.name" name="txtSearch" id="txtSearch">
 	</div>
 </form>
 <br>
 <table class="table table-hover table-bordered">
 	<thead>
 		<tr">
-			<th>Name</th>
-			<th>Gender</th>
-			<th>Planet</th>
+			<th ng-click="sortBy('name')">Name</th>
+			<th ng-click="sortBy('gender')">Gender</th>
+			<th ng-click="sortBy('birth_year')">Birth Year</th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="person in peopleList">
+		<tr ng-repeat="person in peopleList | filter: txtSearch | orderBy:orderWith:orderDirection">
 			<td ng-bind="person.name"></td>
 			<td ng-bind="person.gender"></td>
-			<td ng-bind="person.homeworld"></td>
+			<td ng-bind="person.birth_year"></td>
 		</tr>
 	</tbody>
 </table>
+<div class="text-center mb10">
+	<button type="button" class="btn btn-default" ng-click="getAllPeoplePreviousPage(previousPage)" ng-disabled="currentPage == 0">Previous</button>
+	<span ng-bind="currentPage+1"></span>/
+	<span ng-bind="numberOfPages"></span>
+	<button type="button" class="btn btn-default" ng-click="getAllPeopleNextPage(nextPage)" ng-disabled="currentPage == 8">Next</button>
+</div>

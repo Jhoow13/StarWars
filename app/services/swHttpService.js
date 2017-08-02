@@ -3,10 +3,10 @@
     angular.module('swApp')
         .factory('swHttpService', ['$http', function ($http){
 
-            var _getAllPeople = function(){
+            var _getAllPeople = function(peopleUrl){
                 return $http({
                     method: 'GET',
-                    url: 'http://swapi.co/api/people/'
+                    url: peopleUrl ? peopleUrl : 'http://swapi.co/api/people/'
                 });
             };
 
