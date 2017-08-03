@@ -1,23 +1,58 @@
-html, body{
-    height: 100%;
-}
+@import url('https://fonts.googleapis.com/css?family=Assistant:200');
+
+*{font-family: 'Assistant', sans-serif; font-size:18px;}
 
 body{
-    padding-top: 70px;
-}
-
-nav{
-    box-shadow: 5px 15px 10px -15px rgba(140,140,140,1)
+    background-color: #222222;
+    color: white;   
 }
 
 .mouse-pointer{
 	cursor: pointer;
 }
 
+.form-control{
+  font-size:18px;
+  padding:10px 10px 10px 5px;  
+  outline: none;
+  border: none;
+  box-shadow: none !important;
+  border-bottom:1px solid #757575;
+  background-color: #222222;
+}
 
+.form-control:focus{
+	border-color: #fff;
+}
 
-/** helper classes **/
+.table-hover > tbody > tr:hover {
+  background-color: #333;
+}
 
-.mb10{
-	margin-bottom: 10px;
+.table{
+	margin-bottom: 0px;
+}
+
+.panel, .list-group-item{
+	background-color: transparent;
+}
+
+.btn-default {
+	color: #fff;
+    background-color: transparent;
+    border-color: #ccc;
+}
+
+button.btn-link, button a{
+	color: #fff;
+	font-size: 16px;
+}
+
+button.btn-link:focus{
+	outline: none;
+	border: none;
+}
+
+.mt15{
+	margin: 15px 0;
 }

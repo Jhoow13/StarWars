@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Star Wars</title>    
+    <link rel="icon" href="src/img/icon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="src/css/assets.css">
     <link rel="stylesheet" href="src/css/style.css">    
@@ -10,18 +11,21 @@
     <script src="src/js/app.js"></script>    
 </head>
 <body>
-    <div class="container page-wrap">
-        <h1>Star Wars Test</h1>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima iusto, sint nesciunt quod, nemo quo architecto laudantium soluta amet natus dolores excepturi id ad libero aliquam molestiae placeat, error totam.
-        </p>
-        <header>
-            <nav class="navbar navbar-default navbar-fixed-top">
-                <div class="container">
-                    <a class="navbar-brand" href="#">Logo</a>                    
+    <div class="container">    
+        <div class="row mt15">
+            <div class="">
+                <div class="col-md-3">                
+                    <a href="#"><img src="src/img/swLogo.png" alt="star-wars-font"></a>
                 </div>
-            </nav>
-        </header>
+                <div class="">                
+                    <h4>
+                        Simple and minimalist designed website using an <a href="https://swapi.co" target="_blank" class="btn-link">Star Wars API</a>
+                        to display some information about the movie franchise. Here you will find info from all seven Star Wars films.
+                    </h4>   
+                </div>
+            </div>                     
+        </div>
+        
         <ng-view></ng-view>        
     </div>    
 </body>
