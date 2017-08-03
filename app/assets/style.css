@@ -1,13 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Assistant:200');
 
-
-*{font-family: 'Assistant', sans-serif; ;}
+*{font-family: 'Assistant', sans-serif; font-size:18px;}
 
 body{
     background-color: #222222;
     color: white;   
 }
-
 
 .mouse-pointer{
 	cursor: pointer;
@@ -32,7 +30,11 @@ body{
 }
 
 .table{
-	margin-bottom: 10px;
+	margin-bottom: 0px;
+}
+
+.panel, .list-group-item{
+	background-color: transparent;
 }
 
 .btn-default {
@@ -41,26 +43,16 @@ body{
     border-color: #ccc;
 }
 
-
-.homelink:link{
-	color: #ccc;
-	text-decoration: none;
+button.btn-link, button a{
+	color: #fff;
+	font-size: 16px;
 }
 
-.homelink:visited {
-    color: #ccc;
-    text-decoration: none;
-}
-
-.homelink:hover{
-	color: #aaa;	
-	text-decoration: none;
-}
-
-.homelink:active{
-	text-decoration: none;
+button.btn-link:focus{
+	outline: none;
+	border: none;
 }
 
 .mt15{
-	margin-top: 15px;
+	margin: 15px 0;
 }
