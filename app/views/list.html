@@ -1,11 +1,10 @@
 <form>
-	<div class="input-group col-xs-12">
-		<label class="control-label" for="txtSearch">Search by name</label>
-		<input class="form-control" type="text" ng-model="txtSearch.name" name="txtSearch" id="txtSearch" ng-change="searchAllPeople(txtSearch.name)">
+	<div class="input-group col-xs-12">		
+		<input class="form-control" placeholder="Search by name" type="text" ng-model="txtSearch.name" name="txtSearch" id="txtSearch" ng-change="searchAllPeople(txtSearch.name)">
 	</div>
 </form>
 <br>
-<table class="table table-hover table-bordered table-responsive">
+<table class="table table-hover">
 	<thead>
 		<tr class="mouse-pointer">
 			<th ng-click="sortBy('name')">Name</th>
@@ -21,7 +20,7 @@
 		</tr>
 	</tbody>
 </table>
-<div class="text-center mb10">
+<div class="text-center">
 	<button type="button" class="btn btn-default" ng-click="getAllPeoplePreviousPage(previousPage)" ng-disabled="currentPage <= 0">Previous</button>
 	<span ng-bind="currentPage+1"></span>/
 	<span ng-bind="numberOfPages"></span>
