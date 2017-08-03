@@ -56,3 +56,12 @@ button.btn-link:focus{
 .mt15{
 	margin: 15px 0;
 }
+
+
+@media only screen and (max-width: 768px){
+  a img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
