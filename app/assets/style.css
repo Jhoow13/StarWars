@@ -1,23 +1,66 @@
-html, body{
-    height: 100%;
-}
+@import url('https://fonts.googleapis.com/css?family=Assistant:200');
+
+
+*{font-family: 'Assistant', sans-serif; ;}
 
 body{
-    padding-top: 70px;
+    background-color: #222222;
+    color: white;   
 }
 
-nav{
-    box-shadow: 5px 15px 10px -15px rgba(140,140,140,1)
-}
 
 .mouse-pointer{
 	cursor: pointer;
 }
 
+.form-control{
+  font-size:18px;
+  padding:10px 10px 10px 5px;  
+  outline: none;
+  border: none;
+  box-shadow: none !important;
+  border-bottom:1px solid #757575;
+  background-color: #222222;
+}
 
+.form-control:focus{
+	border-color: #fff;
+}
 
-/** helper classes **/
+.table-hover > tbody > tr:hover {
+  background-color: #333;
+}
 
-.mb10{
+.table{
 	margin-bottom: 10px;
+}
+
+.btn-default {
+	color: #fff;
+    background-color: transparent;
+    border-color: #ccc;
+}
+
+
+.homelink:link{
+	color: #ccc;
+	text-decoration: none;
+}
+
+.homelink:visited {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.homelink:hover{
+	color: #aaa;	
+	text-decoration: none;
+}
+
+.homelink:active{
+	text-decoration: none;
+}
+
+.mt15{
+	margin-top: 15px;
 }
