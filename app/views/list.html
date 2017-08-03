@@ -21,8 +21,8 @@
 	</tbody>
 </table>
 <div class="text-center">
-	<button type="button" class="btn btn-default" ng-click="getAllPeoplePreviousPage(previousPage)" ng-disabled="currentPage <= 0">Previous</button>
+	<button type="button" class="btn btn-link" ng-click="getAllPeoplePreviousPage(previousPage)" ng-disabled="currentPage <= 0">Previous</button>
 	<span ng-bind="currentPage+1"></span>/
 	<span ng-bind="numberOfPages"></span>
-	<button type="button" class="btn btn-default" ng-click="getAllPeopleNextPage(nextPage)" ng-disabled="currentPage >= 8">Next</button>
+	<button type="button" class="btn btn-link" ng-click="getAllPeopleNextPage(nextPage)" ng-disabled="currentPage >= 8">Next</button>
 </div>

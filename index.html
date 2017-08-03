@@ -12,14 +12,21 @@
     <script src="src/index.js"></script>     
 </head>
 <body>
-    <div class="container page-wrap">
-        <div class="text-center mt15">   
-            <a href="#"><img src="src/img/swLogo.png" alt="star-wars-font"></a>
-            <h4>
-                Simple and minimalist designed website using an <a href="https://swapi.co" target="_blank" class="btn-link">Star Wars API</a>
-                to display some information about the movie franchise. Here you will find info from all seven Star Wars films.
-            </h4>   
-        </div>                     
+    <div class="container">    
+        <div class="row mt15">
+            <div class="">
+                <div class="col-md-3">                
+                    <a href="#"><img src="src/img/swLogo.png" alt="star-wars-font"></a>
+                </div>
+                <div class="">                
+                    <h4>
+                        Simple and minimalist designed website using an <a href="https://swapi.co" target="_blank" class="btn-link">Star Wars API</a>
+                        to display some information about the movie franchise. Here you will find info from all seven Star Wars films.
+                    </h4>   
+                </div>
+            </div>                     
+        </div>
+        
         <ng-view></ng-view>        
     </div>    
 </body>
