@@ -8,20 +8,22 @@
                 $location.path('/details');
             };
 
-           	$scope.currentPage = 0;
-           	$scope.numberOfPages = 9;
-
-           	swHttpService.getAllPeople().then(function(response){
-            	$scope.peopleList = response.data.results;
+            swHttpService.getAllPeople().then(function(response){
+                $scope.currentPage = 1;
+                $scope.numberOfPages = Math.ceil(response.data.count/10);
+                $scope.peopleList = response.data.results;
             	$scope.nextPage = response.data.next;
             	$scope.previousPage = response.data.previous;
             });
 
             $scope.searchAllPeople = function(searchParameter){
 	        	swHttpService.searchPeople(searchParameter).then(function(response){
-	            	$scope.peopleList = response.data.results;
+                $scope.peopleList = response.data.results;
+                $scope.currentPage = 1;
+                $scope.numberOfPages = Math.ceil(response.data.count/10);
+
 	            });
-            }
+            };
 
             $scope.getAllPeopleNextPage = function(peopleUrl){
             	swHttpService.getAllPeople(peopleUrl).then(function(response){
@@ -30,7 +32,7 @@
             		$scope.nextPage = response.data.next;
 	            	$scope.peopleList = response.data.results;
 	            });
-            }
+            };
 
             $scope.getAllPeoplePreviousPage = function(peopleUrl){
             	swHttpService.getAllPeople(peopleUrl).then(function(response){
@@ -39,13 +41,13 @@
             		$scope.nextPage = response.data.next;
 	            	$scope.peopleList = response.data.results;
 	            });
-            }
+            };
 
             $scope.getPersonDetails = function(personUrl){
 
         		personDetailService.addUrl(personUrl);
 	            $location.path('/details');
-            }
+            };
 
 			$scope.sortBy = function (field) {
 				$scope.orderWith = field;
