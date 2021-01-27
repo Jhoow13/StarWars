@@ -172,14 +172,14 @@
             var _getAllPeople = function(peopleUrl){
                 return $http({
                     method: 'GET',
-                    url: peopleUrl ? peopleUrl : 'https://swapi.co/api/people/'
+                    url: peopleUrl ? peopleUrl : 'https://swapi.dev/api/people/'
                 });
             };
 
             var _searchPeople = function(searchParameter){
                 return $http({
                     method: 'GET',
-                    url: 'https://swapi.co/api/people/?search=' + searchParameter
+                    url: 'https://swapi.dev/api/people/?search=' + searchParameter
                });
             }
 
